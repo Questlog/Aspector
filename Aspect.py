@@ -45,7 +45,7 @@ aspects = {
     "telum":          { "color": 12603472,   "composition": [ "instrumentum",   "perditio"     ] },
     "tutamen":        { "color": 49344,      "composition": [ "instrumentum",   "terra"        ] },
     "fames":          { "color": 10093317,   "composition": [ "victus",         "vacuos"       ] },
-    "lucrum":         { "color": 15121988,   "composition": [ "humanus",        "perditio"     ] },
+    "lucrum":         { "color": 15121988,   "composition": [ "humanus",        "fames"        ] },
     "fabrico":        { "color": 8428928,    "composition": [ "humanus",        "instrumentum" ] },
     "pannus":         { "color": 15395522,   "composition": [ "instrumentum",   "bestia"       ] },
     "machina":        { "color": 8421536,    "composition": [ "motus",          "instrumentum" ] },
