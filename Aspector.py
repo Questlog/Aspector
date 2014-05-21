@@ -1,9 +1,12 @@
 __author__ = 'Benni'
 
 import sys
+
+from PyQt4 import QtGui, QtCore
+
 import Aspect
 from Window import Ui_dialogAspector as Dlg
-from PyQt4 import QtGui, QtCore
+
 
 class Aspector(QtGui.QDialog, Dlg):
     def __init__(self):
@@ -13,14 +16,29 @@ class Aspector(QtGui.QDialog, Dlg):
 aspectGraph = Aspect.makeGraph()
 app = QtGui.QApplication(sys.argv)
 dialog = Aspector()
+tintedPixmaps = {}
+
+def tintPixmap(pixmap, color):
+    painter = QtGui.QPainter(pixmap)
+    painter.setCompositionMode(painter.CompositionMode_DestinationAtop)
+    painter.fillRect(pixmap.rect(), color)
+    painter.end()
+    return pixmap
 
 for aspect in Aspect.aspects:
+    color = QtGui.QColor(Aspect.aspects[aspect]["color"]) #such code, very facepalm
+    px = tintPixmap(QtGui.QPixmap("aspects/"+aspect+".png"), color)
+    tintedPixmaps[aspect] = px
+
     itm = QtGui.QListWidgetItem(aspect)
-    itm.setIcon(QtGui.QIcon("aspects/"+aspect+".png"))
+    itm.setIcon(QtGui.QIcon(px))
     dialog.listWidgetFrom.addItem(itm)
+
     itm2 = QtGui.QListWidgetItem(aspect)
-    itm2.setIcon(QtGui.QIcon("aspects/"+aspect+".png"))
+    itm2.setIcon(QtGui.QIcon(px))
     dialog.listWidgetTo.addItem(itm2)
+
+
 
 def showAspectPath(path):
     frame = QtGui.QFrame(dialog.scrollAreaWidgetContents)
@@ -37,11 +55,12 @@ def showAspectPath(path):
     horizontalLayout.setContentsMargins(0, 6, 0, 6)
     #horizontalLayout.setObjectName("horizontalLayout")
 
+    #TODO: create a model for the lists, instead of adding labels manually
     for aspect in path:
         pictureLabel = QtGui.QLabel(frame)
         pictureLabel.setToolTip(aspect)
         pictureLabel.setText(aspect)
-        pictureLabel.setPixmap(QtGui.QPixmap("aspects/"+aspect+".png"))
+        pictureLabel.setPixmap(tintedPixmaps[aspect])
         #pictureLabel.setObjectName("label_5")
         horizontalLayout.addWidget(pictureLabel)
 

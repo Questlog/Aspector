@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'untitled.ui'
+# Form implementation generated from reading ui file 'Window.ui'
 #
-# Created: Sun May 11 18:09:53 2014
+# Created: Thu May 22 01:35:27 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -28,6 +28,7 @@ class Ui_dialogAspector(object):
         dialogAspector.setObjectName(_fromUtf8("dialogAspector"))
         dialogAspector.setEnabled(True)
         dialogAspector.resize(310, 464)
+        dialogAspector.setStyleSheet(_fromUtf8(""))
         self.gridLayout = QtGui.QGridLayout(dialogAspector)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.label_2 = QtGui.QLabel(dialogAspector)
@@ -37,7 +38,7 @@ class Ui_dialogAspector(object):
         self.label.setObjectName(_fromUtf8("label"))
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
         self.listWidgetFrom = QtGui.QListWidget(dialogAspector)
-        self.listWidgetFrom.setIconSize(QtCore.QSize(25, 25))
+        self.listWidgetFrom.setIconSize(QtCore.QSize(50, 50))
         self.listWidgetFrom.setObjectName(_fromUtf8("listWidgetFrom"))
         self.gridLayout.addWidget(self.listWidgetFrom, 2, 0, 1, 2)
         self.spinBox = QtGui.QSpinBox(dialogAspector)
@@ -47,7 +48,7 @@ class Ui_dialogAspector(object):
         sizePolicy.setHeightForWidth(self.spinBox.sizePolicy().hasHeightForWidth())
         self.spinBox.setSizePolicy(sizePolicy)
         self.spinBox.setMinimum(2)
-        self.spinBox.setMaximum(10)
+        self.spinBox.setMaximum(15)
         self.spinBox.setObjectName(_fromUtf8("spinBox"))
         self.gridLayout.addWidget(self.spinBox, 4, 1, 1, 1)
         self.pushButtonGo = QtGui.QPushButton(dialogAspector)
@@ -58,7 +59,7 @@ class Ui_dialogAspector(object):
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.gridLayout.addWidget(self.label_3, 4, 0, 1, 1)
         self.listWidgetTo = QtGui.QListWidget(dialogAspector)
-        self.listWidgetTo.setIconSize(QtCore.QSize(25, 25))
+        self.listWidgetTo.setIconSize(QtCore.QSize(50, 50))
         self.listWidgetTo.setObjectName(_fromUtf8("listWidgetTo"))
         self.gridLayout.addWidget(self.listWidgetTo, 2, 2, 1, 1)
         self.scrollArea = QtGui.QScrollArea(dialogAspector)
