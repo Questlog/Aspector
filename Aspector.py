@@ -19,14 +19,17 @@ dialog = Aspector()
 tintedPixmaps = {}
 
 def tintPixmap(pixmap, color):
-    painter = QtGui.QPainter(pixmap)
-    painter.setCompositionMode(painter.CompositionMode_DestinationAtop)
-    painter.fillRect(pixmap.rect(), color)
+    newPixmap = QtGui.QPixmap(pixmap)
+    painter = QtGui.QPainter(newPixmap)
+    painter.setCompositionMode(painter.CompositionMode_SourceIn)
+    painter.fillRect(newPixmap.rect(), color)
+    painter.setCompositionMode(painter.CompositionMode_Multiply)
+    painter.drawPixmap(0,0,pixmap)
     painter.end()
-    return pixmap
+    return newPixmap
 
 for aspect in Aspect.aspects:
-    color = QtGui.QColor(Aspect.aspects[aspect]["color"]) #such code, very facepalm
+    color = QtGui.QColor(Aspect.aspects[aspect]["color"]) #such code, very tidy, wow
     px = tintPixmap(QtGui.QPixmap("aspects/"+aspect+".png"), color)
     tintedPixmaps[aspect] = px
 
